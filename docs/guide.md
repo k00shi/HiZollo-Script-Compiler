@@ -31,13 +31,13 @@ const compiler = new Compiler({
 });
 ```
 ### 模組
-模組是 HiZollo Script 中最重要的東西，他決定了一個 HiZollo Script 可以做多少 JavaScript 的工作。模組可以分為兩種：核心模組與一般模組。
+模組是 HiZollo Script 中最重要的東西，它決定了一個 HiZollo Script 可以做多少 JavaScript 的工作。模組可以分為兩種：核心模組與一般模組。
 
 #### 核心模組
-任何編譯器必須提供一個 `core` 核心模組。核心模組一定會被建碼，且不能由使用者手動引入。核心模組中一定要實作以下三個函式：
+任何編譯器必須提供一個 `core` 核心模組。核心模組一定會被建碼，且不能由使用者手動引入。核心模組中一定要實作以下四個函式：
 - `_start()`：在程式的最一開始會呼叫此函式
 - `_write(content: any)`：在使用者使用 `<<<` 輸出時會呼叫此函式
-- `_panic(e: Error)`：程式發生執行錯誤時會呼叫此函式
+- `_panic(e: any)`：程式發生執行錯誤時會呼叫此函式
 - `_end()`：在程式結束時會呼叫此函式
 
 除此之外沒有任何限制，可以自行加上任何函式或副作用。
@@ -83,7 +83,7 @@ const result = compiler.compile(source);
 編譯器會回傳一個 [`CompileResult`](./docs.md#compileresult) 物件，其中 `build` 物件中會含有建碼。確定沒有編譯錯誤後，你可以使用 `eval`、其他東西或下方的 `ExecutionWorker` 來幫你執行此程式。
 
 ## 使用 ExecutionWorker
-[ExecutionWorker](./docs.md#executionworker) 是此套件提供用來執行編譯後內容的物件。你可以設定一個執行時間上限，時間到後若沒有結束，他會自動拋出 `EXCEED_RUNTIME_LIMIT` 例外。
+[ExecutionWorker](./docs.md#executionworker) 是此套件提供用來執行編譯後內容的物件。你可以設定一個執行時間上限，時間到後若沒有結束，它會自動拋出 `ExecutionTimeoutError` 例外。
 
 ### 引入敘述
 CommonJS:
@@ -100,13 +100,13 @@ import { ExecutionWorker } from '@hizollo/hzscript';
 ```js
 const ew = new ExecutionWorker(code);
 ```
-code 部分放入純 JavaScript 程式
+code 部分放入純 JavaScript 程式。
 
 ### 執行程式
 ```js
 ew.execute({ maxExecutionTime: 3000 });
 ```
-執行輸入的程式，如果執行時間超過 3 秒將會自動結束。此動作回傳 Promise，如果你想等待執行結束再繼續往下，可以使用 `await`。
+執行輸入的程式，如果執行時間超過 3 秒將會自動結束。此動作回傳一個 `Promise<ExecutionResult>`，如果你想等待執行結束再繼續往下，可以使用 `await`。
 
 ## 文件
 請參閱[文件](./docs.md)。

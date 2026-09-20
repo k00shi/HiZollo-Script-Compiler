@@ -17,7 +17,7 @@
 ```ts
 const compiler = new Compiler(options: CompilerOptions)
 ```
-- `options`: 一個 [`CompilerOptions`](#compileroptions) 物件
+- `options`：一個 [`CompilerOptions`](#compileroptions) 物件
 
 ### 成員函式
 - `compile(source: string)`：編譯給定的 HiZollo Script 程式碼。回傳一個 [`CompileResult`](#compileresult) 物件。
@@ -30,7 +30,7 @@ const compiler = new Compiler(options: CompilerOptions)
 ```ts
 const ew = new ExecutionWorker(code: string)
 ```
-- `code`: 要執行的程式。
+- `code`：要執行的程式。
 
 ### 成員函式
 - `execute(options: `[`ExecuteOptions`](#executeoptions)`)`：執行程式。回傳一個 `Promise<ExecutionResult>` 表示成功結束。
@@ -70,7 +70,7 @@ const ew = new ExecutionWorker(code: string)
 - `MissingRightBracket`：遺漏右括號
 - `MissingRightSquareBracket`：遺漏右中括號
 - `MissingRightCurlyBracket`：遺漏右大括號
-- `MissingAssignOperator`：遺漏指定運算符
+- `MissingAssignOperator`：遺漏指定運算子
 - `MissingArrow`：遺漏箭頭
 - `InvalidComparation`：關係運算子錯誤
 - `InappropriateBreakStatement`：跳出敘述只能出現在迴圈內
@@ -87,7 +87,7 @@ const ew = new ExecutionWorker(code: string)
 - `disabledFunctions`：`string[]`，列出被禁用的函式。
 
 ### PathMap
-一個鍵值都為字串的物件，其鍵表示套件之名稱，值為套件程式之路徑或程式碼。有關套件之詳細敘述請看[此](./guide.md#模組)。
+一個鍵值都為字串的物件，其鍵表示模組之名稱，值為模組程式之路徑或程式碼。有關模組之詳細敘述請看[此](./guide.md#模組)。
 
 ### CompileResult
 一個物件，有以下的鍵值對：
