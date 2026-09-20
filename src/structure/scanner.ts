@@ -68,7 +68,7 @@ class Scanner {
       const nowLine = this.linePosition;
       // 檢查是否為 Identifier
       if (/[A-Za-z]/.test(this.nextWord)) {
-        // 繼續往下讀取直到碰到非識別字可用字符
+        // 繼續往下讀取直到碰到非識別字可用字元
         do {
           tokenValue += this.nextWord;
           this.advance();
@@ -331,7 +331,7 @@ class Scanner {
           return this.makeToken(Tokens.Dollar, tokenValue);
 
         // '／;／# 開頭
-        // 註解，直接拉到行末並宣成註解 Token，Parser 會將其忽略
+        // 註解，直接拉到行末並變成註解 Token，Parser 會將其忽略
         case "'": case ";": case "#":
           do {
             tokenValue += this.nextWord;

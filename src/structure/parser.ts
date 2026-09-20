@@ -111,7 +111,7 @@ class Parser {
 
   // 當離開一程式碼區域時做的清理動作
   private leaveBlock(): void {
-    // 將識別字堆疊中此區域宣告的的識別字全部移除
+    // 將識別字堆疊中此區域宣告的識別字全部移除
     while (this.idStack.top() && this.idStack.top()?.level == this.nowLevel)
       this.idStack.pop();
 
@@ -280,7 +280,7 @@ class Parser {
 
       // 交換敘述
       if (this.nowTokenIs(Tokens.Swap)) {
-        // 往前移一格已對識別字做檢查
+        // 往前移一格以對識別字做檢查
         this.revert();
         this.Identifier(true, false); // 檢查但不建碼
         this.movePointerToNext();
@@ -572,7 +572,7 @@ class Parser {
     this.ForHead();
 
 
-    // 必需接續左括號表示 For 區塊
+    // 必須接續左括號表示 For 區塊
     if (this.nowTokenIs(Tokens.LeftBracket)) {
       this.movePointerToNext();
     } else {

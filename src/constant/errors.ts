@@ -44,7 +44,7 @@ const errorToString: TranslateMap = {
   [`${Errors.MissingRightBracket}`]: "遺漏右括號",
   [`${Errors.MissingRightSquareBracket}`]: "遺漏右中括號",
   [`${Errors.MissingRightCurlyBracket}`]: "遺漏右大括號",
-  [`${Errors.MissingAssignOperator}`]: "遺漏指定運算符",
+  [`${Errors.MissingAssignOperator}`]: "遺漏指定運算子",
   [`${Errors.MissingArrow}`]: "遺漏箭頭",
   [`${Errors.InvalidComparation}`]: "關係運算子錯誤",
   [`${Errors.InappropriateBreakStatement}`]: "跳出敘述只能出現在迴圈內",
